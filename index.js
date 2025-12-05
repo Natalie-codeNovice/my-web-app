@@ -1,19 +1,20 @@
 const http = require('http');
-const auth = require('./auth');
 
 const server = http.createServer((req, res) => {
+
+  // NEW FEATURE: /about route
   if (req.url === '/about') {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('About Page\n');
-  } else if (req.url === '/auth') {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end(auth.getWelcomeMessage());
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('This is the About Page for my web application.');
+
   } else {
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello, this is a basic web app! by Anathalie');
+    // Default page
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, this is a basic web app!');
   }
+
 });
 
 server.listen(3000, () => {
-  console.log('Server running at http://localhost:3000');
+  console.log('Server running on http://localhost:3000');
 });
